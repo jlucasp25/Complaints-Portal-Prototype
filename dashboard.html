@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>McDonald's - PdQ Acesso Administrativo</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Assets do Dashboard -->
+    <link href="assets/dashassets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/dashassets/css/animate.min.css" rel="stylesheet"/>
+    <link href="assets/dashassets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <!--  Fonts & Icons  -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/dashassets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <!-- Fim de Assets do Dashboard -->
+
+	<!--Bibliotecas do Chart.js-->
+	<script src="http://www.chartjs.org/dist/2.7.0/Chart.bundle.js"></script>
+	<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+	<!-- Fim das Bibliotecas do Chart.js-->
+	
+	<!--Bibliotecas do heatmap-->
+	<link rel="stylesheet" href="assets/ammap/ammap.css" type="text/css">
+    <script src="assets/ammap/ammap.js" type="text/javascript"></script>
+    <!-- map file should be included after ammap.js -->
+	<script src="assets/ammap/maps/js/portugalHigh.js" type="text/javascript"></script>
+	<script src="assets/ammap/geo.js" type="text/javascript"></script>
+	<!--Fim das Bibliotecas do heatmap-->
+	
+	<!-- Bibliotecas do amcharts-->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/amstock.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="https://www.amcharts.com/lib/3/xy.js"></script>
+	<!-- Fim das bibliotecas do amcharts-->
+		
+	<script>
+		/*Script de alternância de opacidade .js - beta 0.1*/
+		/* Código por: João Lucas Pires (29/11/2017)*/
+		function lightcard1()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 1;
+			c2.style.opacity = 0.2;
+			c3.style.opacity = 0.2;
+			c4.style.opacity = 0.2;
+			c5.style.opacity = 0.2;
+		}
+		function lightcard2()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 0.2;
+			c2.style.opacity = 1;
+			c3.style.opacity = 0.2;
+			c4.style.opacity = 0.2;
+			c5.style.opacity = 0.2;
+		}
+		function lightcard3()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 0.2;
+			c2.style.opacity = 0.2;
+			c3.style.opacity = 1;
+			c4.style.opacity = 0.2;
+			c5.style.opacity = 0.2;
+		}
+		function lightcard4()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 0.2;
+			c2.style.opacity = 0.2;
+			c3.style.opacity = 0.2;
+			c4.style.opacity = 1;
+			c5.style.opacity = 0.2;
+		}
+		function lightcard5()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 0.2;
+			c2.style.opacity = 0.2;
+			c3.style.opacity = 0.2;
+			c4.style.opacity = 0.2;
+			c5.style.opacity = 1;
+		}
+		function lightcardglobal()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 1;
+			c2.style.opacity = 1;
+			c3.style.opacity = 1;
+			c4.style.opacity = 1;
+			c5.style.opacity = 1;
+		}
+	</script>
+	
+	
+	<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+h1,h2,h3,h4,h5,h6,h7,h8,p {font-family: 'Roboto',open-sans;}
+	</style>
+
+
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="grey" data-image="assets/images/wlp1.jpg">
+
+    <!--
+      change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+      you can also add an image using data-image tag
+    -->
+
+    	<div class="sidebar-wrapper">
+        	    <div class="logo">
+                <a href="#" class="simple-text">
+                   Portal da Queixa
+                </a>
+					<hr style="margin-top:-5px">
+           		<a href="#" class="simple-text" style="font-size: 15px;margin-top:-25px">
+                   ACESSO ADMINISTRATIVO
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>Métricas das empresas</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.html">
+                        <i class="pe-7s-user"></i>
+                        <p>Métricas dos Utilizadores</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="listagem.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>Diretório Empresarial</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboardgeral.html">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Métricas Globais</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="pe-7s-science"></i>
+                        <p>Gestão do setor público</p>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="#">
+                        <i class="pe-7s-bell"></i>
+                        <p>Notificações</p>
+                    </a>
+                </li>
+				<li class="active-pro">
+                    <a href="#" id="randomizexxx">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Atualizar dados</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed" style="">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img class="navbar-brand" src="assets/images/mcdonalds.jpg" style="border-radius:50%;margin:5 0 0 0;padding: 0 0 0 0;" >
+                    <a class="navbar-brand" href="#">McDonald's</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#"  onclick="lightcardglobal();">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+									<p class="hidden-lg hidden-md">
+										5 Notifications
+										<b class="caret"></b>
+									</p>
+                              </a>
+                     
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               <p>Conta</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Definições
+										<b class="caret"></b>
+									</p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Temas</a></li>
+                                <li><a href="#">Serviços de Hosting</a></li>
+                                <li><a href="#">Permissões</a></li>
+                                <li><a href="#">Suporte Técnico</a></li>
+                                <li><a href="#">Alterar dados</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">FCUP</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p>Sair</p>
+                            </a>
+                        </li>
+						<li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" id="card1" style="z-index:0;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);" onclick="lightcard1();">
+                        <h4 class="title" style="margin-left:20px;padding-top:5px">Reclamações não resolvidas</h4>
+					 <div id="canvas-holder" style="margin-left:10px;z-index:0">
+        <canvas id="chart-area" height="450" width="300" style="z-index: 0"></canvas>
+							</div>
+    
+    <script>
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    var chartColors = window.chartColors;
+    var color = Chart.helpers.color;
+    var config = {
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                ],
+                backgroundColor: [
+                    color(chartColors.red).alpha(0.5).rgbString(),
+                    color(chartColors.orange).alpha(0.5).rgbString(),
+                    color(chartColors.yellow).alpha(0.5).rgbString(),
+                    color(chartColors.green).alpha(0.5).rgbString(),
+                    color(chartColors.blue).alpha(0.5).rgbString(),
+                ],
+                label: 'My dataset' // for legend
+            }],
+            labels: [
+                "Empresa não respondeu",
+                "Não foram encontradas soluções",
+                "O cliente não foi especifico na exposição",
+                "Queixa semelhante já registada",
+                "Queixa inválida"
+            ]
+        },
+        options: {
+            responsive: false,
+            legend: {
+                position: 'bottom',
+            },
+            title: {
+                display: false,
+                text: 'Display da métrica: "Causas de reclamações não resolvidas"'
+            },
+            scale: {
+              ticks: {
+                beginAtZero: true
+              },
+              reverse: false
+            },
+            animation: {
+                animateRotate: true,
+                animateScale: true
+            }
+        }
+    };
+
+
+    document.getElementById('randomizexxx').addEventListener('click', function() {
+        config.data.datasets.forEach(function(piece, i) {
+            piece.data.forEach(function(value, j) {
+                config.data.datasets[i].data[j] = randomScalingFactor();
+            });
+        });
+        window.myPolarArea.update();
+    });
+
+    var colorNames = Object.keys(window.chartColors);
+    document.getElementById('addData').addEventListener('click', function() {
+        if (config.data.datasets.length > 0) {
+            config.data.labels.push('data #' + config.data.labels.length);
+            config.data.datasets.forEach(function(dataset) {
+                var colorName = colorNames[config.data.labels.length % colorNames.length];
+                dataset.backgroundColor.push(window.chartColors[colorName]);
+                dataset.data.push(randomScalingFactor());
+            });
+            window.myPolarArea.update();
+        }
+    });
+    document.getElementById('removeData').addEventListener('click', function() {
+        config.data.labels.pop(); // remove the label first
+        config.data.datasets.forEach(function(dataset) {
+            dataset.backgroundColor.pop();
+            dataset.data.pop();
+        });
+        window.myPolarArea.update();
+    });
+    </script>
+                        </div>
+                    </div>
+
+                   <div class="col-md-8">
+                        <div class="card" id="card2" style="max-height: 400px;z-index:0;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);" onclick="lightcard2();">
+                        <h4 class="title" style="margin-left:50px;padding-top:10px;z-index: 10;position: absolute">Áreas com maior afluência de reclamações</h4>
+                        	 <div id="mapdiv" style="width: 100%; background-color:#EEEEEE; height: 400px;"></div>
+								
+                       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                         </div>
+                     <div class="card" id="card3" style="min-height: 140px;z-index:0;margin-top:-20px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);" onclick="lightcard3();">
+                    	<h4 class="title" style="font-size:17px;position:absolute;margin-left:5px">Tempo de Resposta</h4>	 
+                    		 <div style="width:100%;">
+        <canvas id="canvas2" style="width:600px;height:150px;margin-left:70px;margin-top:5px"></canvas>
+    </div>
+
+    
+    <script>
+        var MONTHS = ["1", "2", "3", "4", "5", ">5","S/Resposta"];
+        var config2 = {
+            type: 'line',
+            data: {
+                labels: ["1", "2", "3", "4", "5", ">5", "S/Resposta"],
+                datasets: [{
+                    label: "Probabilidade de resposta",
+                    backgroundColor: window.chartColors.black,
+                    borderColor: window.chartColors.black,
+                    data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor()
+                    ],
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: false,
+                title:{
+                    display:false,
+                    text:''
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Dias de espera'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Probabilidade'
+                        }
+                    }]
+                }
+            }
+        };
+
+        window.onload = function() {
+            
+        };
+
+        document.getElementById('randomizexxx').addEventListener('click', function() {
+            config2.data.datasets.forEach(function(dataset) {
+                dataset.data = dataset.data.map(function() {
+                    return randomScalingFactor();
+                });
+
+            });
+
+            window.myLine.update();
+        });
+
+        var colorNamesx = Object.keys(window.chartColors);
+        document.getElementById('addDataset').addEventListener('click', function() {
+            var colorNamex = colorNames[config2.data.datasets.length % colorNamesx.length];
+            var newColorx = window.chartColors[colorNamex];
+            var newDatasetx = {
+                label: 'Dataset ' + config2.data.datasets.length,
+                backgroundColor: newColorx,
+                borderColor: newColorx,
+                data: [],
+                fill: false
+            };
+
+            for (var index = 0; index < config2.data.labels.length; ++index) {
+                newDatasetx.data.push(randomScalingFactor());
+            }
+
+            config2.data.datasets.push(newDatasetx);
+            window.myLine.update();
+        });
+
+        document.getElementById('addData').addEventListener('click', function() {
+            if (config2.data.datasets.length > 0) {
+                var month = MONTHS[config2.data.labels.length % MONTHS.length];
+                config2.data.labels.push(month);
+
+                config2.data.datasets.forEach(function(dataset) {
+                    dataset.data.push(randomScalingFactor());
+                });
+
+                window.myLine.update();
+            }
+        });
+
+        document.getElementById('removeDataset').addEventListener('click', function() {
+            config2.data.datasets.splice(0, 1);
+            window.myLine.update();
+        });
+
+        document.getElementById('removeData').addEventListener('click', function() {
+            config2.data.labels.splice(-1, 1); // remove the label first
+
+            config2.data.datasets.forEach(function(dataset, datasetIndex) {
+                dataset.data.pop();
+            });
+
+            window.myLine.update();
+        });
+    </script>
+                    
+                    </div>
+                     
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-7" style="margin-top:-15px">
+                        <div class="card" id="card4" style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);" onclick="lightcard4();">
+                            <div class="header">
+                                <h4 class="title">Afluência de Reclamações</h4>
+                                
+                            </div>
+                            <div class="content">
+ <script>
+var chartData1 = [];
+var chartData2 = [];
+var chartData3 = [];
+var chartData4 = [];
+
+generateChartData();
+
+function generateChartData() {
+  var firstDate = new Date();
+  firstDate.setDate( firstDate.getDate() - 500 );
+  firstDate.setHours( 0, 0, 0, 0 );
+
+  var a1 = 1500;
+  var b1 = 1500;
+  var a2 = 1700;
+  var b2  = 1700;
+  var a3 = 1600;
+  var b3 = 1600;
+  var a4 = 1400;
+  var b4 = 1400;
+
+  for ( var i = 0; i < 500; i++ ) {
+    var newDate = new Date( firstDate );
+    newDate.setDate( newDate.getDate() + i );
+
+    a1 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+    b1 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+
+    a2 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+    b2 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+
+    a3 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+    b3 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+
+    a4 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+    b4 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+
+    chartData1.push( {
+      "date": newDate,
+      "value": a1,
+      "volume": b1 + 1500
+    } );
+    chartData2.push( {
+      "date": newDate,
+      "value": a2,
+      "volume": b2 + 1500
+    } );
+    chartData3.push( {
+      "date": newDate,
+      "value": a3,
+      "volume": b3 + 1500
+    } );
+    chartData4.push( {
+      "date": newDate,
+      "value": a4,
+      "volume": b4 + 1500
+    } );
+  }
+}
+
+var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "stock",
+  "theme": "light",
+  "dataSets": [ {
+      "title": "Mc Donald's",
+      "fieldMappings": [ {
+        "fromField": "value",
+        "toField": "value"
+      }, {
+        "fromField": "volume",
+        "toField": "volume"
+      } ],
+      "dataProvider": chartData1,
+      "categoryField": "date"
+    }, {
+      "title": "Burger King",
+      "fieldMappings": [ {
+        "fromField": "value",
+        "toField": "value"
+      }, {
+        "fromField": "volume",
+        "toField": "volume"
+      } ],
+      "dataProvider": chartData2,
+      "categoryField": "date"
+    }, {
+      "title": "Pizza Hut",
+      "fieldMappings": [ {
+        "fromField": "value",
+        "toField": "value"
+      }, {
+        "fromField": "volume",
+        "toField": "volume"
+      } ],
+      "dataProvider": chartData3,
+      "categoryField": "date"
+    }, {
+      "title": "KFC",
+      "fieldMappings": [ {
+        "fromField": "value",
+        "toField": "value"
+      }, {
+        "fromField": "volume",
+        "toField": "volume"
+      } ],
+      "dataProvider": chartData4,
+      "categoryField": "date"
+    }
+  ],
+
+  "panels": [ {
+    "showCategoryAxis": false,
+    "title": "Nº bruto de reclamações",
+    "percentHeight": 90,
+    "stockGraphs": [ {
+      "id": "g1",
+      "valueField": "value",
+      "comparable": true,
+      "compareField": "value",
+      "balloonText": "[[title]]:<b>[[value]]</b>",
+      "compareGraphBalloonText": "[[title]]:<b>[[value]]</b>"
+    } ],
+    "stockLegend": {
+      "periodValueTextComparing": "[[percents.value.close]]%",
+      "periodValueTextRegular": "[[value.close]]"
+    }
+  }, {
+    "title": "Nº de respostas",
+    "percentHeight": 30,
+    "stockGraphs": [ {
+      "valueField": "volume",
+      "type": "column",
+      "showBalloon": false,
+      "fillAlphas": 1
+    } ],
+    "stockLegend": {
+      "periodValueTextRegular": "[[value.close]]"
+    }
+  } ],
+
+  "chartScrollbarSettings": {
+    "graph": "g1"
+  },
+
+  "chartCursorSettings": {
+    "valueBalloonsEnabled": true,
+    "fullWidth": true,
+    "cursorAlpha": 0.1,
+    "valueLineBalloonEnabled": true,
+    "valueLineEnabled": true,
+    "valueLineAlpha": 0.5
+  },
+
+  "periodSelector": {
+    "position": "left",
+    "periods": [ {
+      "period": "MM",
+      "selected": true,
+      "count": 1,
+      "label": "1 mês"
+    }, {
+      "period": "YYYY",
+      "count": 1,
+      "label": "1 ano"
+    }, {
+      "period": "YTD",
+
+      "label": "Ano atual"
+    }, {
+      "period": "MAX",
+      "label": "Máximo"
+    } ]
+  },
+
+  "dataSetSelector": {
+    "position": "left"
+  },
+
+  "export": {
+    "enabled": false
+  }
+} );
+	 chart.pathToImages = "https://www.amcharts.com/lib/3/images/";
+</script>
+               <div id="chartdiv" style="width:100%;height:500px"></div>     
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5" style="margin-top:-15px">
+                        <div class="card" id="card5" style="width:100%;margin-left:-20px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);min-height: 570px" onclick="lightcard5();">
+                            <h4 class="title" style="font-size:17px;position:absolute;margin-left:5px">Quantidade de SPAM</h4>
+                            <!-- Chart code -->
+                            <br>
+<script>
+	
+var chart = AmCharts.makeChart("chartdivX", {
+    "type": "xy",
+    "theme": "light",
+    "marginRight": 30,
+    "dataProvider": [{
+        "x": 10,
+        "y": 14,
+        "errorX": 3,
+        "errorY": 4
+    }, {
+        "x": 5,
+        "y": 3,
+        "errorX": 1.52,
+        "errorY": 6.8
+    }, {
+        "x": 10,
+        "y": 3,
+        "errorX": 0.8,
+        "errorY": 3.5
+    }, {
+        "x": 6,
+        "y": 5,
+        "errorX": 1.2,
+        "errorY": 4.2
+    }, {
+        "x": 11,
+        "y": 4,
+        "errorX": 2.4,
+        "errorY": 3.9
+    }, {
+        "x": 13,
+        "y": 1,
+        "errorX": 1.5,
+        "errorY": 3.3
+    }, {
+        "x": 1,
+        "y": 6,
+        "errorX": 2,
+        "errorY": 3.3
+    }],
+    "valueAxes": [{
+        "title": "SPAM direccionado ao cliente",
+        "position": "bottom",
+        "id": "x1"
+    }, {
+        "minMaxMultiplier": 1.2,
+        "position": "left",
+        "id": "y1",
+        "title": "SPAM direccionado à empresa"
+    }],
+    "graphs": [{
+        "balloonText": "x:<b>[[x]]</b> y:<b>[[y]]</b><br>x error:<b>[[errorX]]</b><br>y error:<b>[[errorY]]</b>",
+        "bullet": "xError",
+        "bulletAxis": "x1",
+        "errorField": "errorX",
+        "lineAlpha": 0,
+        "xField": "x",
+        "yField": "y",
+        "fillAlphas": 0
+    }, {
+        "balloonText": "x:<b>[[x]]</b> y:<b>[[y]]</b><br>x error:<b>[[errorX]]</b><br>y error:<b>[[errorY]]</b>",
+        "bullet": "yError",
+        "bulletAxis": "y1",
+        "errorField": "errorY",
+        "lineAlpha": 0,
+        "xField": "x",
+        "yField": "y",
+        "fillAlphas": 0
+    }],
+    "chartScrollbar": {
+        "scrollbarHeight": 5,
+        "backgroundAlpha": 0.1,
+        "backgroundColor": "#868686",
+        "selectedBackgroundColor": "#67b7dc",
+        "selectedBackgroundAlpha": 1
+    },
+    "export": {
+        "enabled": false
+    }
+});		
+	chart.pathToImages = "https://www.amcharts.com/lib/3/images/";
+</script>
+
+<!-- HTML -->
+<div id="chartdivX" style="width:100%;height:540px;padding-top:0px;"></div>		
+                      
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portal
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Outro
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                               Gestor de notícias
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> Francisco Gonçalves, João Lucas Pires, Mariana Pinto, Sara Ferreira
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+	
+    <!--  .js do Dashboard   -->
+    <script src="assets/dashassets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/dashassets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/dashassets/js/chartist.min.js"></script>
+    <script src="assets/dashassets/js/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/dashassets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+	<!-- Light Bootstrap Table DEMO methods,-->
+	<script src="assets/dashassets/js/demo.js"></script>
+
+<!-- Script da notificação-->
+	<script type="text/javascript">
+    	$(document).ready(function(){
+
+        	demo.initChartist();
+
+        	$.notify({
+            	icon: 'pe-7s-info',
+            	message: "Bem-vindo ao dashboard para acesso a membros do governo."
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+    	});
+	</script>
+	
+<!--Este script está no fim para permitir carregar dois graph.js numa página-->	
+<script> 
+    window.onload = function() {
+        var ctx = document.getElementById("chart-area");
+		var ctx2 = document.getElementById("canvas2").getContext("2d");
+    	window.myLine = new Chart(ctx2, config2);
+        window.myPolarArea = Chart.PolarArea(ctx, config);
+    };
+</script>
+
+</html>

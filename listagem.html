@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Diretório Empresarial - IPM</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Assets do Dashboard -->
+    <link href="assets/dashassets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/dashassets/css/animate.min.css" rel="stylesheet"/>
+    <link href="assets/dashassets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <!--  Fonts & Icons  -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/dashassets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <!-- Fim de Assets do Dashboard -->
+
+	<!--Bibliotecas do Chart.js-->
+	<script src="http://www.chartjs.org/dist/2.7.0/Chart.bundle.js"></script>
+	<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+	<!-- Fim das Bibliotecas do Chart.js-->
+	
+	<!--Bibliotecas do heatmap-->
+	<link rel="stylesheet" href="assets/ammap/ammap.css" type="text/css">
+    <script src="assets/ammap/ammap.js" type="text/javascript"></script>
+    <!-- map file should be included after ammap.js -->
+	<script src="assets/ammap/maps/js/portugalHigh.js" type="text/javascript"></script>
+	<script src="assets/ammap/geo.js" type="text/javascript"></script>
+	<!--Fim das Bibliotecas do heatmap-->
+	
+	<!-- Bibliotecas do amcharts-->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/amstock.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<style>
+	.invisible {
+  left: -999px;
+  overflow: hidden;
+  position: absolute;
+  top: -999px;
+}
+
+/* helpers/align.css */
+
+.align {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* layout/base.css */
+
+html {
+  height: 100%;
+}
+
+
+
+/* modules/anchor.css */
+
+a {
+  outline: 0;
+}
+
+/* modules/icon.css */
+:root:hover {
+  --icon-fill-color: #123456;
+}
+.icons {
+  display: none;
+}
+
+.icon {
+  display: inline-block;
+  fill: #fffff;
+  font-size: 16px;
+  font-size: 1rem;
+  height: 1em;
+  vertical-align: middle;
+  width: 1em;
+}
+
+.icon--2x {
+  font-size: 32px;
+  font-size: 2rem;
+}
+
+/* modules/image.css */
+
+svg {
+  max-width: 100%;
+}
+
+/* modules/navigation.css */
+
+.navigation {
+  background-color: #f0f6ff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation a {
+  display: block;
+  padding: 24px;
+  padding: 1.5rem;
+  position: relative;
+  text-decoration: none;
+}
+
+.navigation a:focus::after,
+.navigation a:hover::after {
+  opacity: 1;
+}
+
+.navigation a::after {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s;
+          transition: opacity 0.3s;
+  width: 100%;
+}
+
+.navigation--inline ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+html::before {
+  display: block;
+  white-space: pre-wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  font-size: .9em;
+  padding: 1.5em 1em 1.5em 4.5em;
+  color: #318edf;
+  background-color: #fff;
+  background: url(
+      "data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%20%20width%3D%22512px%22%20height%3D%22512px%22%20viewBox%3D%220%200%20512%20512%22%20enable-background%3D%22new%200%200%20512%20512%22%20xml%3Aspace%3D%22preserve%22%3E%0A%20%20%0A%3ClinearGradient%20id%3D%22SVGID_1_%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%22125.7515%22%20y1%3D%22307.4834%22%20x2%3D%22125.7514%22%20y2%3D%22-73.4854%22%20gradientTransform%3D%22matrix(1%200%200%20-1%20-50%20373)%22%3E%0A%20%20%3Cstop%20%20offset%3D%220%22%20style%3D%22stop-color%3A%23428BCA%22%2F%3E%0A%20%20%3Cstop%20%20offset%3D%220.325%22%20style%3D%22stop-color%3A%23507DBF%22%2F%3E%0A%20%20%3Cstop%20%20offset%3D%221%22%20style%3D%22stop-color%3A%235C71B6%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%20%20%3Cpath%0A%20%20%20%20fill%3D%22url(%23SVGID_1_)%22%0A%20%20%20%20d%3D%22M256.002%2C50C142.23%2C50%2C50%2C142.229%2C50%2C256.001C50%2C369.771%2C142.23%2C462%2C256.002%2C462C369.771%2C462%2C462%2C369.771%2C462%2C256.001C462%2C142.229%2C369.771%2C50%2C256.002%2C50z%20M256.46%2C398.518c-16.207%2C0-29.345-13.139-29.345-29.346c0-16.205%2C13.138-29.342%2C29.345-29.342c16.205%2C0%2C29.342%2C13.137%2C29.342%2C29.342C285.802%2C385.379%2C272.665%2C398.518%2C256.46%2C398.518zM295.233%2C158.239c-2.481%2C19.78-20.7%2C116.08-26.723%2C147.724c-1.113%2C5.852-6.229%2C10.1-12.187%2C10.1h-0.239c-6.169%2C0-11.438-4.379-12.588-10.438c-6.1-32.121-24.293-128.504-26.735-147.971c-2.94-23.441%2C15.354-44.171%2C38.977-44.171C279.674%2C113.483%2C298.213%2C134.488%2C295.233%2C158.239z%22%0A%20%20%2F%3E%0A%3C%2Fsvg%3E"
+    ) 1em 1em / 2.5em 2.5em no-repeat, #fff;
+  border-bottom: 4px solid #318edf;
+  box-shadow: 0 0 .6em rgba(0,0,0, .25);
+  font-family: Menlo, Monaco, monospace;
+  content: ;
+}
+
+	
+	
+	
+	
+	</style>	
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="grey" data-image="assets/images/wlp1.jpg">
+
+    <!--
+      change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+      you can also add an image using data-image tag
+    -->
+
+    	<div class="sidebar-wrapper">
+        	    <div class="logo">
+                <a href="#" class="simple-text">
+                   Portal da Queixa
+                </a>
+					<hr style="margin-top:-5px">
+           		<a href="#" class="simple-text" style="font-size: 15px;margin-top:-25px">
+                   ACESSO ADMINISTRATIVO
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Métricas das empresas</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.html">
+                        <i class="pe-7s-user"></i>
+                        <p>Métricas dos Utilizadores</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-note2"></i>
+                        <p>Diretório Empresarial</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboardgeral.html">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Métricas Globais</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="pe-7s-science"></i>
+                        <p>Gestão do setor público</p>
+                    </a>
+                </li>
+             
+                <li>
+                    <a href="#">
+                        <i class="pe-7s-bell"></i>
+                        <p>Notificações</p>
+                    </a>
+                </li>
+				<li class="active-pro">
+                    <a href="#">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Atualizar dados</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed" style="">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <a class="navbar-brand" href="#">Diretório Empresarial</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+									<p class="hidden-lg hidden-md">
+										5 Notifications
+										<b class="caret"></b>
+									</p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               <p>Conta</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Definições
+										<b class="caret"></b>
+									</p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Temas</a></li>
+                                <li><a href="#">Serviços de Hosting</a></li>
+                                <li><a href="#">Permissões</a></li>
+                                <li><a href="#">Suporte Técnico</a></li>
+                                <li><a href="#">Alterar dados</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">FCUP</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p>Sair</p>
+                            </a>
+                        </li>
+						<li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+           
+               <div class="row"> <!--Menu horizontal-->
+               	<nav class="navigation navigation--inline">
+    <ul style="margin-left:100px">
+     
+      <li>
+        <a href="#">
+          <img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-203-shopping-cart.png"></img>
+		
+          <span class="">Comércio</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+			<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-299-hospital.png"></img>
+          <span class="">Saúde</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+         <img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-277-cutlery.png"></img>
+         
+          <span class="">Alimentação</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+         <img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-442-phone-alt.png"
+          <span class="">Telecomunicações</span>
+        </a>
+      </li>
+       <li>
+        <a href="#">
+			<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-6-car.png"></img>
+   
+			  <span class="padding-left:20px"><span>Transportes</span>
+        </a>
+      </li>
+       <li>
+        <a href="#">
+         <img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-2-leaf.png"
+          <span class="">Seguros</span>
+        </a>
+      </li>
+       <li>
+        <a href="#">
+          <img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-21-home.png"></img>
+          <span class="">Imobiliário</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+ 
+             <br><br>
+                
+                    </div>
+                 <div class="row">
+                <div class="col-md-3">
+                	<div class="card" style="min-height: 300px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);">
+						<div class="header"><img src="assets/images/mcdonalds.jpg" style="border-radius:50%;width: 60%;height:60%;margin-left: 20%">
+							<h4 style="text-align: center;margin-top:5px">McDonald's</h4><hr style="margin-top:-5px"></hr></div>
+						<div class="content">
+							<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-276-fast-food.png" style="margin-top:-80px"><h5 style="display:inline;margin-left:10px;position: absolute;margin-top:-16px">Alimentação</h5>
+							<a type="button" class="btn" style="margin-top:20px;margin-left:25px" href="dashboard.html">Ver mais</a>
+						</div>
+       		
+       				</div>
+                </div>
+                  <div class="col-md-3">
+                	<div class="card" style="min-height: 300px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);">
+       				<div class="header"><img src="assets/images/bk.jpg" style="border-radius:50%;width: 60%;height:60%;margin-left: 20%">
+							<h4 style="text-align: center;margin-top:5px">Burger King</h4><hr style="margin-top:-5px"></hr></div>
+						<div class="content">
+							<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-276-fast-food.png" style="margin-top:-80px"><h5 style="display:inline;margin-left:10px;position: absolute;margin-top:-16px">Alimentação</h5>
+							<button type="button" class="btn" style="margin-top:20px;margin-left:25px">Ver mais</button>
+						</div>
+       		
+       				</div>
+       		
+       				</div>
+              
+                  <div class="col-md-3">
+                	<div class="card" style="min-height: 300px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);">
+       		<div class="header"><img src="assets/images/kfc.png" style="border-radius:50%;width: 60%;height:65%;margin-left: 20%"><br>
+							<h4 style="text-align: center;margin-top:5px">KFC</h4><hr style="margin-top:-5px"></hr></div>
+						<div class="content">
+						<br>
+							<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-276-fast-food.png" style="margin-top:-80px"><h5 style="display:inline;margin-left:10px;position: absolute;margin-top:-16px">Alimentação </h5>
+							<button type="button" class="btn" style="margin-top:20px;margin-left:25px">Ver mais</button>
+						</div>
+       		
+       				</div>
+       		
+       				</div>
+                
+                <div class="col-md-3">
+                	<div class="card" style="min-height: 300px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);">
+       		<div class="header"><img src="assets/images/dominos.jpg" style="border-radius:50%;width: 60%;height:60%;margin-left: 20%">
+							<h4 style="text-align: center;margin-top:5px">Domino's Pizza</h4><hr style="margin-top:-5px"></hr></div>
+					<div class="content">
+							<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-276-fast-food.png" style="margin-top:-80px"><h5 style="display:inline;margin-left:10px;position: absolute;margin-top:-16px">Alimentação</h5>
+							<button type="button" class="btn" style="margin-top:20px;margin-left:25px">Ver mais</button>
+						</div>
+       				</div>
+       		
+       				</div>
+          </div><!--Fim do row-->
+                        <div class="row">
+                <div class="col-md-3">
+                	<div class="card" style="min-height: 300px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);">
+						<div class="header"><img src="assets/images/pans.jpg" style="border-radius:50%;width: 60%;height:60%;margin-left: 20%">
+							<h4 style="text-align: center;margin-top:5px">Pans</h4><hr style="margin-top:-5px"></hr></div>
+					<div class="content">
+							<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-276-fast-food.png" style="margin-top:-80px"><h5 style="display:inline;margin-left:10px;position: absolute;margin-top:-16px">Alimentação</h5>
+							<button type="button" class="btn" style="margin-top:20px;margin-left:25px">Ver mais</button>
+						</div>
+       		
+       				</div>
+                </div>
+                  <div class="col-md-3">
+                	<div class="card" style="min-height: 300px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);">
+       				<div class="header"><img src="assets/images/pizzahut.jpg" style="border-radius:50%;width: 60%;height:60%;margin-left: 20%">
+							<h4 style="text-align: center;margin-top:5px">Pizza Hut</h4><hr style="margin-top:-5px"></hr></div>
+						<div class="content">
+							<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-276-fast-food.png" style="margin-top:-80px"><h5 style="display:inline;margin-left:10px;position: absolute;margin-top:-16px">Alimentação</h5>
+							<button type="button" class="btn" style="margin-top:20px;margin-left:25px">Ver mais</button>
+						</div>
+       		
+       				</div>
+			</div>
+              
+                  <div class="col-md-3">
+                	<div class="card" style="min-height: 300px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);">
+       		<div class="header"><img src="assets/images/woktowalk.jpg" style="border-radius:50%;width: 60%;height:60%;margin-left: 20%">
+							<h4 style="text-align: center;margin-top:5px">Wok to Walk</h4><hr style="margin-top:-5px"></hr></div>
+				<div class="content">
+							<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-276-fast-food.png" style="margin-top:-80px"><h5 style="display:inline;margin-left:10px;position: absolute;margin-top:-16px">Alimentação</h5>
+							<button type="button" class="btn" style="margin-top:20px;margin-left:25px">Ver mais</button>
+						</div>
+       		
+       				</div>
+       		
+       				</div>
+                
+                <div class="col-md-3">
+                	<div class="card" style="min-height: 300px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);">
+       		<div class="header"><img src="assets/images/telepizza.jpg" style="border-radius:50%;width: 60%;height:60%;margin-left: 20%">
+							<h4 style="text-align: center;margin-top:5px">TelePizza</h4><hr style="margin-top:-5px"></hr></div>
+					<div class="content">
+							<img src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-276-fast-food.png" style="margin-top:-80px"><h5 style="display:inline;margin-left:10px;position: absolute;margin-top:-16px">Alimentação</h5>
+							<button type="button" class="btn" style="margin-top:20px;margin-left:25px">Ver mais</button>
+						</div>
+       		
+       				</div>
+       		
+       				</div>
+          </div>
+                       </div>
+                       </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portal
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Outro
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                               Gestor de notícias
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> Francisco Gonçalves, João Lucas Pires, Mariana Pinto, Sara Ferreira
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+	
+    <!--  .js do Dashboard   -->
+    <script src="assets/dashassets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/dashassets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/dashassets/js/chartist.min.js"></script>
+    <script src="assets/dashassets/js/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/dashassets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+	<!-- Light Bootstrap Table DEMO methods,-->
+	<script src="assets/dashassets/js/demo.js"></script>
+
+<!-- Script da notificação-->
+	<script type="text/javascript">
+    	$(document).ready(function(){
+
+        	demo.initChartist();
+
+        	$.notify({
+            	icon: 'pe-7s-info',
+            	message: "Bem-vindo ao dashboard para acesso a membros do governo."
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+    	});
+	</script>
+	
+<!--Este script está no fim para permitir carregar dois graph.js numa página-->	
+<script> 
+    window.onload = function() {
+        var ctx = document.getElementById("chart-area");
+		var ctx2 = document.getElementById("canvas2").getContext("2d");
+    	window.myLine = new Chart(ctx2, config2);
+        window.myPolarArea = Chart.PolarArea(ctx, config);
+    };
+</script>
+
+</html>

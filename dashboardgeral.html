@@ -1,0 +1,1628 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Alimentação - PdQ Acesso Administrativo</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Assets do Dashboard -->
+    <link href="assets/dashassets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/dashassets/css/animate.min.css" rel="stylesheet"/>
+    <link href="assets/dashassets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <!--  Fonts & Icons  -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/dashassets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <!-- Fim de Assets do Dashboard -->
+
+	<!--Bibliotecas do Chart.js-->
+	<script src="http://www.chartjs.org/dist/2.7.0/Chart.bundle.js"></script>
+	<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+	<!-- Fim das Bibliotecas do Chart.js-->
+	
+	<!--Bibliotecas do heatmap-->
+	<link rel="stylesheet" href="assets/ammap/ammap.css" type="text/css">
+    <script src="assets/ammap/ammap.js" type="text/javascript"></script>
+    <!-- map file should be included after ammap.js -->
+	<script src="assets/ammap/maps/js/portugalHigh.js" type="text/javascript"></script>
+	<script src="assets/ammap/geo.js" type="text/javascript"></script>
+	<!--Fim das Bibliotecas do heatmap-->
+	
+	<!-- Bibliotecas do amcharts-->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/amstock.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="https://www.amcharts.com/lib/3/xy.js"></script>
+	<!-- Fim das bibliotecas do amcharts-->
+		<style>
+	
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+h1,h2,h3,h4,h5,h6,h7,h8,p {font-family: 'Roboto',open-sans;}
+	
+			
+			canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+#chartdiv {
+  width: 100%;
+  height: 500px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.amChartsPeriodSelector {
+  float: right;
+}
+
+.amChartsPeriodSelector .amChartsButton {
+  padding-top: 5px;
+  padding-bottom: 3px;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid #dddddd;
+  outline: none;
+  background: #fff;
+  color: #000;
+}
+
+.amChartsPeriodSelector .amChartsButton:hover {
+  background-color: #eeeeee;
+}
+
+.amChartsPeriodSelector .amChartsButtonSelected {
+  background-color: #fff;
+  border: 0;
+  border-bottom: 1px solid #0088CC;
+  color: #000000;
+  padding-bottom: 3px;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  margin: 1px;
+  outline: none;
+}
+
+.amChartsDataSetSelector {
+  padding: 5px 0 0 15px;
+}
+</style>
+
+	
+	
+	
+	<script>
+		/*Script de alternância de opacidade .js - beta 0.1*/
+		/* Código por: João Lucas Pires (29/11/2017)*/
+		function lightcard1()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 1;
+			c2.style.opacity = 0.2;
+			c3.style.opacity = 0.2;
+			c4.style.opacity = 0.2;
+			c5.style.opacity = 0.2;
+		}
+		function lightcard2()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 0.2;
+			c2.style.opacity = 1;
+			c3.style.opacity = 0.2;
+			c4.style.opacity = 0.2;
+			c5.style.opacity = 0.2;
+		}
+		function lightcard3()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 0.2;
+			c2.style.opacity = 0.2;
+			c3.style.opacity = 1;
+			c4.style.opacity = 0.2;
+			c5.style.opacity = 0.2;
+		}
+		function lightcard4()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 0.2;
+			c2.style.opacity = 0.2;
+			c3.style.opacity = 0.2;
+			c4.style.opacity = 1;
+			c5.style.opacity = 0.2;
+		}
+		function lightcard5()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 0.2;
+			c2.style.opacity = 0.2;
+			c3.style.opacity = 0.2;
+			c4.style.opacity = 0.2;
+			c5.style.opacity = 1;
+		}
+		function lightcardglobal()
+		{
+			var c1 = document.getElementById("card1");
+			var c2 = document.getElementById("card2");
+			var c3 = document.getElementById("card3");
+			var c4 = document.getElementById("card4");
+			var c5 = document.getElementById("card5");
+			c1.style.opacity = 1;
+			c2.style.opacity = 1;
+			c3.style.opacity = 1;
+			c4.style.opacity = 1;
+			c5.style.opacity = 1;
+		}
+	</script>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="grey" data-image="assets/images/wlp1.jpg">
+
+    <!--
+      change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+      you can also add an image using data-image tag
+    -->
+
+    	<div class="sidebar-wrapper">
+        	    <div class="logo">
+                <a href="#" class="simple-text">
+                   Portal da Queixa
+                </a>
+					<hr style="margin-top:-5px">
+           		<a href="#" class="simple-text" style="font-size: 15px;margin-top:-25px">
+                   ACESSO ADMINISTRATIVO
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="">
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Métricas das empresas</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.html">
+                        <i class="pe-7s-user"></i>
+                        <p>Métricas dos Utilizadores</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="listagem.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>Diretório Empresarial</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Métricas Globais</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="pe-7s-science"></i>
+                        <p>Gestão do setor público</p>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="#">
+                        <i class="pe-7s-bell"></i>
+                        <p>Notificações</p>
+                    </a>
+                </li>
+				<li class="active-pro">
+                    <a id="randomizexxx">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Atualizar dados</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed" style="">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img class="navbar-brand" src="assets/images/glyphicons_free/glyphicons_free/glyphicons/png/glyphicons-277-cutlery.png" style="width:16px;height:24px;padding: 0 0 0 0;margin-left:5px;margin-top:18px" >
+                    <a class="navbar-brand" href="#">Métricas Globais - Setor da Alimentação</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#"  onclick="lightcardglobal();">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+									<p class="hidden-lg hidden-md">
+										5 Notifications
+										<b class="caret"></b>
+									</p>
+                              </a>
+                     
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               <p>Conta</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Definições
+										<b class="caret"></b>
+									</p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Temas</a></li>
+                                <li><a href="#">Serviços de Hosting</a></li>
+                                <li><a href="#">Permissões</a></li>
+                                <li><a href="#">Suporte Técnico</a></li>
+                                <li><a href="#">Alterar dados</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">FCUP</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p>Sair</p>
+                            </a>
+                        </li>
+						<li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card" id="card1" style="min-height: 500px;min-width:511px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);margin-top:-19px;margin-left:-10px" onclick="lightcard1();">
+                        <h4 class="title" style="margin-left:20px;padding-top:5px">Satisfação do Cliente:<br>(Rácio Reclamações vs. Resolvidas)</h4>
+                   <!-- Chart code -->
+<script>
+var actualValues = [ {
+  "date": "2017-02-01",
+  "BurgerKing": 88.75,
+  "Dominos": 63.580002,
+  "MCDonalds": 39.84,
+  "WokToWalk": 33.229996,
+  "Pans": 17.24,
+  "PizzaHut": 32.349976,
+  "KFC": 32.18,
+  "Telepizza": 43.779999
+}, {
+  "date": "2017-02-02",
+  "BurgerKing": 18.529999,
+  "Dominos": 63.169998,
+  "MCDonalds": 39.98,
+  "WokToWalk": 10.839996,
+  "Pans": 17.780001,
+  "PizzaHut": 89.950012,
+  "KFC": 31.969999,
+  "Telepizza": 43.689999
+}, {
+  "date": "2017-02-03",
+  "BurgerKing": 29.080002,
+  "Dominos": 63.68,
+  "MCDonalds": 40.43,
+  "WokToWalk": 30.979996,
+  "Pans": 17.610001,
+  "PizzaHut": 10.200012,
+  "KFC": 32.07,
+  "Telepizza": 43.709999
+}, {
+  "date": "2017-02-06",
+  "BurgerKing": 30.289993,
+  "Dominos": 63.639999,
+  "MCDonalds": 40.099998,
+  "WokToWalk": 32.059998,
+  "Pans": 17.93,
+  "PizzaHut": 7.640015,
+  "KFC": 32.029999,
+  "Telepizza": 44.419998
+}, {
+  "date": "2017-02-07",
+  "BurgerKing": 31.529999,
+  "Dominos": 63.43,
+  "MCDonalds": 40.07,
+  "WokToWalk": 31.839996,
+  "Pans": 18.26,
+  "PizzaHut": 82.5,
+  "KFC": 32.43,
+  "Telepizza": 44.369999
+}, {
+  "date": "2017-02-08",
+  "BurgerKing": 32.039993,
+  "Dominos": 63.34,
+  "MCDonalds": 40.02,
+  "WokToWalk": 23.199997,
+  "Pans": 18.719999,
+  "PizzaHut": 19.710022,
+  "KFC": 33.25,
+  "Telepizza": 45.07
+}, {
+  "date": "2017-02-09",
+  "BurgerKing": 32.419998,
+  "Dominos": 64.059998,
+  "MCDonalds": 40.23,
+  "WokToWalk": 34.139999,
+  "Pans": 16.41,
+  "PizzaHut": 21.359985,
+  "KFC": 33.119999,
+  "Telepizza": 45.080002
+}, {
+  "date": "2017-02-10",
+  "BurgerKing": 32.119995,
+  "Dominos": 64,
+  "MCDonalds": 40.790001,
+  "WokToWalk": 34.190002,
+  "Pans": 15.58,
+  "PizzaHut": 27.460022,
+  "KFC": 33.630001,
+  "Telepizza": 45.029999
+}, {
+  "date": "2017-02-13",
+  "BurgerKing": 33.289993,
+  "Dominos": 64.720001,
+  "MCDonalds": 41.09,
+  "WokToWalk": 34.050003,
+  "Pans": 15.81,
+  "PizzaHut": 86.530029,
+  "KFC": 33.790001,
+  "Telepizza": 45.459999
+}, {
+  "date": "2017-02-14",
+  "BurgerKing": 35.020004,
+  "Dominos": 64.57,
+  "MCDonalds": 41.099998,
+  "WokToWalk": 13.850006,
+  "Pans": 16.52,
+  "PizzaHut": 36.390015,
+  "KFC": 33.630001,
+  "Telepizza": 45.02
+}, {
+  "date": "2017-02-15",
+  "BurgerKing": 15.509995,
+  "Dominos": 64.529999,
+  "MCDonalds": 41.41,
+  "WokToWalk": 13.440002,
+  "Pans": 16.74,
+  "PizzaHut": 82.700012,
+  "KFC": 34.009998,
+  "Telepizza": 45.650002
+}, {
+  "date": "2017-02-16",
+  "BurgerKing": 35.350006,
+  "Dominos": 64.519997,
+  "MCDonalds": 41.59,
+  "WokToWalk": 33.839996,
+  "Pans": 16.35,
+  "PizzaHut": 44.140015,
+  "KFC": 33.540001,
+  "Telepizza": 45.16
+}, {
+  "date": "2017-02-17",
+  "BurgerKing": 35.720001,
+  "Dominos": 64.620003,
+  "MCDonalds": 42.060001,
+  "WokToWalk": 33.529999,
+  "Pans": 16.620001,
+  "PizzaHut": 45.070007,
+  "KFC": 33.759998,
+  "Telepizza": 45.099998
+}, {
+  "date": "2017-02-21",
+  "BurgerKing": 36.699997,
+  "Dominos": 64.489998,
+  "MCDonalds": 42.27,
+  "WokToWalk": 33.720001,
+  "Pans": 16.42,
+  "PizzaHut": 56.440002,
+  "KFC": 33.919998,
+  "Telepizza": 45.5
+}, {
+  "date": "2017-02-22",
+  "BurgerKing": 37.110001,
+  "Dominos": 64.360001,
+  "MCDonalds": 42.509998,
+  "WokToWalk": 36.119995,
+  "Pans": 16.08,
+  "PizzaHut": 55.609985,
+  "KFC": 33.82,
+  "Telepizza": 45.98
+}, {
+  "date": "2017-02-23",
+  "BurgerKing": 36.529999,
+  "Dominos": 64.620003,
+  "MCDonalds": 42.959999,
+  "WokToWalk": 35.360001,
+  "Pans": 16.030001,
+  "PizzaHut": 82.190002,
+  "KFC": 33.599998,
+  "Telepizza": 45.41
+}, {
+  "date": "2017-02-24",
+  "BurgerKing": 88.660004,
+  "Dominos": 64.620003,
+  "MCDonalds": 43.169998,
+  "WokToWalk": 35.440002,
+  "Pans": 15.98,
+  "PizzaHut": 85.23999,
+  "KFC": 34.060001,
+  "Telepizza": 45.549999
+}, {
+  "date": "2017-02-27",
+  "BurgerKing": 36.929993,
+  "Dominos": 64.230003,
+  "MCDonalds": 42.700001,
+  "WokToWalk": 36.410004,
+  "Pans": 16.059999,
+  "PizzaHut": 88.640015,
+  "KFC": 34.279999,
+  "Telepizza": 45.709999
+}, {
+  "date": "2017-02-28",
+  "BurgerKing": 36.990005,
+  "Dominos": 63.98,
+  "MCDonalds": 42.59,
+  "WokToWalk": 15.539993,
+  "Pans": 15.77,
+  "PizzaHut": 45.039978,
+  "KFC": 33.900002,
+  "Telepizza": 45.66
+}, {
+  "date": "2017-03-01",
+  "BurgerKing": 39.789993,
+  "Dominos": 64.940002,
+  "MCDonalds": 42.919998,
+  "WokToWalk": 17.419998,
+  "Pans": 15.79,
+  "PizzaHut": 53.080017,
+  "KFC": 34.27,
+  "Telepizza": 46.240002
+}, {
+  "date": "2017-03-02",
+  "BurgerKing": 38.960007,
+  "Dominos": 64.010002,
+  "MCDonalds": 42.889999,
+  "WokToWalk": 16.759995,
+  "Pans": 15.79,
+  "PizzaHut": 88.909973,
+  "KFC": 33.91,
+  "Telepizza": 45.939999
+}, {
+  "date": "2017-03-03",
+  "BurgerKing": 39.779999,
+  "Dominos": 64.25,
+  "MCDonalds": 42.689999,
+  "WokToWalk": 37.169998,
+  "Pans": 15.75,
+  "PizzaHut": 49.880005,
+  "KFC": 33.740002,
+  "Telepizza": 45.91
+}, {
+  "date": "2017-03-06",
+  "BurgerKing": 39.339996,
+  "Dominos": 64.269997,
+  "MCDonalds": 42.57,
+  "WokToWalk": 37.419998,
+  "Pans": 15.56,
+  "PizzaHut": 46.609985,
+  "KFC": 33.639999,
+  "Telepizza": 45.639999
+}, {
+  "date": "2017-03-07",
+  "BurgerKing": 39.520004,
+  "Dominos": 64.400002,
+  "MCDonalds": 42.599998,
+  "WokToWalk": 37.300003,
+  "Pans": 15.18,
+  "PizzaHut": 46.02002,
+  "KFC": 33.470001,
+  "Telepizza": 45.73
+}, {
+  "date": "2017-03-08",
+  "BurgerKing": 39,
+  "Dominos": 64.989998,
+  "MCDonalds": 42.610001,
+  "WokToWalk": 37.720001,
+  "Pans": 15.24,
+  "PizzaHut": 85.5,
+  "KFC": 33.32,
+  "Telepizza": 45.98
+}];
+
+/**
+ * Assume the graph scale goes only from 0 to 1.
+ * Thus, the maximum allowed height is 1 for the valueAxis,
+ * and the middle value for the balloon is 0.5.
+ */
+function calcBandPos1( val, baseline, bandOpts ) {
+  var break_u_1 = baseline + ( baseline * bandOpts.band1_inc_perc );
+
+  if ( val <= baseline ) {
+    return 0;
+  } else if ( ( val > baseline ) && ( ( val - baseline ) > ( break_u_1 - baseline ) ) ) {
+    return 1;
+  } else {
+    return ( val - baseline ) / ( break_u_1 - baseline );
+  }
+}
+
+function calcBandPos2( val, baseline, bandOpts ) {
+  var break_u_1 = baseline + ( baseline * bandOpts.band1_inc_perc );
+  var break_u_2 = baseline + ( baseline * bandOpts.band2_inc_perc );
+
+  if ( val <= baseline ) {
+    return 0;
+  } else if ( ( val > baseline ) && ( ( val - baseline ) <= ( break_u_1 - baseline ) ) ) {
+    return 0;
+  } else if ( ( val > baseline ) && ( ( val - baseline ) > ( break_u_2 - baseline ) ) ) {
+    return 1;
+  } else {
+    return ( val - break_u_1 ) / ( break_u_2 - break_u_1 );
+  }
+}
+
+function calcBandPos3( val, baseline, bandOpts ) {
+  var break_u_2 = baseline + ( baseline * bandOpts.band2_inc_perc );
+  var break_u_3 = baseline + ( baseline * bandOpts.band3_inc_perc );
+
+  if ( val <= baseline ) {
+    return 0;
+  } else if ( ( val > baseline ) && ( ( val - baseline ) <= ( break_u_2 - baseline ) ) ) {
+    return 0;
+  } else if ( ( val > baseline ) && ( ( val - baseline ) > ( break_u_3 - baseline ) ) ) {
+    return 1;
+  } else {
+    return ( val - break_u_2 ) / ( break_u_3 - break_u_2 );
+  }
+}
+
+function calcBandNeg1( val, baseline, bandOpts ) {
+  var break_d_1 = baseline - ( baseline * bandOpts.band1_dec_perc );
+
+  if ( val >= baseline ) {
+    return 0;
+  } else if ( ( val < baseline ) && ( ( baseline - val ) > ( baseline - break_d_1 ) ) ) {
+    return 1;
+  } else {
+    return ( baseline - val ) / ( baseline - break_d_1 );
+  }
+}
+
+function calcBandNeg2( val, baseline, bandOpts ) {
+  var break_d_1 = baseline - ( baseline * bandOpts.band1_dec_perc );
+  var break_d_2 = baseline - ( baseline * bandOpts.band2_dec_perc );
+
+  if ( val >= baseline ) {
+    return 0;
+  } else if ( ( val < baseline ) && ( Math.abs( val - baseline ) <= Math.abs( break_d_1 - baseline ) ) ) {
+    return 0;
+  } else if ( ( val < baseline ) && ( Math.abs( val - baseline ) > Math.abs( break_d_2 - baseline ) ) ) {
+    return 1;
+  } else {
+    return 1 - ( Math.abs( break_d_2 - val ) / Math.abs( break_d_2 - break_d_1 ) );
+  }
+}
+
+function calcBandNeg3( val, baseline, bandOpts ) {
+  var break_d_2 = baseline - ( baseline * bandOpts.band2_dec_perc );
+  var break_d_3 = baseline - ( baseline * bandOpts.band3_dec_perc );
+
+  if ( val >= baseline ) {
+    return 0;
+  } else if ( ( val < baseline ) && ( Math.abs( val - baseline ) <= Math.abs( break_d_2 - baseline ) ) ) {
+    return 0;
+  } else if ( ( val < baseline ) && ( Math.abs( val - baseline ) > Math.abs( break_d_3 - baseline ) ) ) {
+    return 1;
+  } else {
+    return 1 - ( Math.abs( break_d_3 - val ) / Math.abs( break_d_3 - break_d_2 ) );
+  }
+}
+
+function buildFieldMappings( dim ) {
+  return [ {
+    "fromField": "val" + dim,
+    "toField": "val" + dim
+  }, {
+    "fromField": "pos_1u" + dim,
+    "toField": "pos_1u" + dim
+  }, {
+    "fromField": "pos_2u" + dim,
+    "toField": "pos_2u" + dim
+  }, {
+    "fromField": "pos_3u" + dim,
+    "toField": "pos_3u" + dim
+  }, {
+    "fromField": "neg_1u" + dim,
+    "toField": "neg_1u" + dim
+  }, {
+    "fromField": "neg_2u" + dim,
+    "toField": "neg_2u" + dim
+  }, {
+    "fromField": "neg_3u" + dim,
+    "toField": "neg_3u" + dim
+  } ];
+}
+
+function buildPanel( dim ) {
+  return {
+    "allLabels": [ {
+      "text": undefined,
+      "align": "left",
+      "x": "1%",
+      "size": 14
+    } ],
+    "valueAxes": [ {
+      "axisAlpha": 0,
+      "gridAlpha": 0,
+      "position": "left",
+      "gridCount": 2,
+      "labelsEnabled": false,
+      "labelFrequency": 1,
+      "strictMinMax": true,
+      "minimum": 0,
+      "maximum": 1
+    }, {
+      "id": "actual",
+      "axisAlpha": 0,
+      "gridAlpha": 0,
+      "position": "left",
+      "gridCount": 2,
+      "labelsEnabled": false
+    } ],
+    "fontFamily": "Arial, sans-serif",
+    "showCategoryAxis": false,
+    "stockGraphs": [ {
+      "id": "pos_band1" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "pos_1d",
+      "fillAlphas": 0,
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "fillAlphas": 1,
+      "lineColor": "#c6dbef",
+      "fillToGraph": "pos_band1" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "pos_1u" + dim,
+      "type": "smoothedLine",
+"theme": "light",
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "id": "pos_band2" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "pos_2d",
+      "fillAlphas": 0,
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "fillAlphas": 1,
+      "lineColor": "#6baed6",
+      "fillToGraph": "pos_band2" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "pos_2u" + dim,
+      "type": "smoothedLine",
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "id": "pos_band3" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "pos_3d",
+      "fillAlphas": 0,
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "fillAlphas": 1,
+      "lineColor": "#2171b5",
+      "fillToGraph": "pos_band3" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "pos_3u" + dim,
+      "type": "smoothedLine",
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "id": "neg_band1" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "neg_1d",
+      "fillAlphas": 0,
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "fillAlphas": 1,
+      "lineColor": "#fcbba1",
+      "fillToGraph": "neg_band1" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "neg_1u" + dim,
+      "type": "smoothedLine",
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "id": "neg_band2" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "neg_2d",
+      "fillAlphas": 0,
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "fillAlphas": 1,
+      "lineColor": "#WokToWalk6a4a",
+      "fillToGraph": "neg_band2" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "neg_2u" + dim,
+      "type": "smoothedLine",
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "id": "neg_band3" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "neg_3d",
+      "fillAlphas": 0,
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "fillAlphas": 1,
+      "lineColor": "#cb181d",
+      "fillToGraph": "neg_band3" + dim,
+      "lineAlpha": 0,
+      "showBalloon": false,
+      "valueField": "neg_3u" + dim,
+      "type": "smoothedLine",
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "fillAlphas": 0,
+      "lineAlpha": 0,
+      "lineColor": "#eee",
+      "showBalloon": true,
+      "showBalloonAt": "open",
+      "valueField": "val" + dim,
+      "openField": "mid",
+      "type": "smoothedLine",
+      "useDataSetColors": false,
+      "visibleInLegend": false
+    }, {
+      "lineAlpha": 1,
+      "lineColor": "#2171b5",
+      "lineThickness": 2,
+      "showBalloon": true,
+      "showBalloonAt": "open",
+      "valueField": "actual" + dim,
+      "type": "smoothedLine",
+      "useDataSetColors": false,
+      "visibleInLegend": false,
+      "valueAxis": "actual"
+    } ]
+  };
+}
+
+var dimensions = [ {
+  "dimension": "PizzaHut",
+  "dataSet": undefined,
+  "panel": undefined
+}, {
+  "dimension": "BurgerKing",
+  "dataSet": undefined,
+  "panel": undefined
+}, {
+  "dimension": "KFC",
+  "dataSet": undefined,
+  "panel": undefined
+}, {
+  "dimension": "WokToWalk",
+  "dataSet": undefined,
+  "panel": undefined
+}, {
+  "dimension": "Dominos",
+  "dataSet": undefined,
+  "panel": undefined
+}, {
+  "dimension": "MCDonalds",
+  "dataSet": undefined,
+  "panel": undefined
+}, {
+  "dimension": "Pans",
+  "dataSet": undefined,
+  "panel": undefined
+}, {
+  "dimension": "Telepizza",
+  "dataSet": undefined,
+  "panel": undefined
+} ];
+
+var chartPanels = [];
+
+AmCharts.addInitHandler( function( chart ) {
+
+  // set the bandOpts percentages
+  var bandOpts = {
+    'band1_inc_perc': .1,
+    'band2_inc_perc': .2,
+    'band3_inc_perc': .3,
+    'band1_dec_perc': .1,
+    'band2_dec_perc': .2,
+    'band3_dec_perc': .3
+  };
+
+  var newDataSet = [ {
+    "title": "horizon",
+    "categoryField": "date",
+    "dataProvider": undefined,
+    "showInCompare": false,
+    "fieldMappings": [ {
+      "fromField": "pos_1d",
+      "toField": "pos_1d"
+    }, {
+      "fromField": "pos_2d",
+      "toField": "pos_2d"
+    }, {
+      "fromField": "pos_3d",
+      "toField": "pos_3d"
+    }, {
+      "fromField": "neg_1d",
+      "toField": "neg_1d"
+    }, {
+      "fromField": "neg_2d",
+      "toField": "neg_2d"
+    }, {
+      "fromField": "mid",
+      "toField": "mid"
+    } ]
+  }, {
+    "title": "actual",
+    "categoryField": "date",
+    "dataProvider": actualValues,
+    "showInCompare": false,
+    "fieldMappings": [ {
+      "fromField": "BurgerKing",
+      "toField": "actual_BurgerKing"
+    }, {
+      "fromField": "PizzaHut",
+      "toField": "actual_PizzaHut"
+    }, {
+      "fromField": "KFC",
+      "toField": "actual_KFC"
+    }, {
+      "fromField": "WokToWalk",
+      "toField": "actual_WokToWalk"
+    }, {
+      "fromField": "Dominos",
+      "toField": "actual_Dominos"
+    }, {
+      "fromField": "MCDonalds",
+      "toField": "actual_MCDonalds"
+    }, {
+      "fromField": "Pans",
+      "toField": "actual_Pans"
+    }, {
+      "fromField": "Telepizza",
+      "toField": "actual_Telepizza"
+    } ]
+  } ];
+
+  // transform base data
+  // to prepare for graphs
+  var newDataProvider = [];
+
+  var baseline_BurgerKing = actualValues[ 0 ][ 'BurgerKing' ],
+    baseline_PizzaHut = actualValues[ 0 ][ 'PizzaHut' ],
+    baseline_KFC = actualValues[ 0 ][ 'KFC' ],
+    baseline_WokToWalk = actualValues[ 0 ][ 'WokToWalk' ],
+    baseline_Dominos = actualValues[ 0 ][ 'Dominos' ],
+    baseline_MCDonalds = actualValues[ 0 ][ 'MCDonalds' ],
+    baseline_Pans = actualValues[ 0 ][ 'Pans' ],
+    baseline_Telepizza = actualValues[ 0 ][ 'Telepizza' ];
+
+  for ( var i = 0; i < actualValues.length; i++ ) {
+    var av = actualValues[ i ];
+    newDataProvider.push( {
+      'date': av.date,
+      
+      'val_BurgerKing': parseFloat( av[ 'BurgerKing' ].toFixed( 2 ) ),
+      'val_PizzaHut': parseFloat( av[ 'PizzaHut' ].toFixed( 2 ) ),
+      'val_KFC': parseFloat( av[ 'KFC' ].toFixed( 2 ) ),
+      'val_WokToWalk': parseFloat( av[ 'WokToWalk' ].toFixed( 2 ) ),
+      'val_Dominos': parseFloat( av[ 'Dominos' ].toFixed( 2 ) ),
+      'val_MCDonalds': parseFloat( av[ 'MCDonalds' ].toFixed( 2 ) ),
+      'val_Pans': parseFloat( av[ 'Pans' ].toFixed( 2 ) ),
+      'val_Telepizza': parseFloat( av[ 'Telepizza' ].toFixed( 2 ) ),
+      
+      
+      'val_BurgerKing': parseFloat( av[ 'BurgerKing' ].toFixed( 2 ) ),
+      'val_PizzaHut': parseFloat( av[ 'PizzaHut' ].toFixed( 2 ) ),
+      'val_KFC': parseFloat( av[ 'KFC' ].toFixed( 2 ) ),
+      'val_WokToWalk': parseFloat( av[ 'WokToWalk' ].toFixed( 2 ) ),
+      'val_Dominos': parseFloat( av[ 'Dominos' ].toFixed( 2 ) ),
+      'val_MCDonalds': parseFloat( av[ 'MCDonalds' ].toFixed( 2 ) ),
+      'val_Pans': parseFloat( av[ 'Pans' ].toFixed( 2 ) ),
+      'val_Telepizza': parseFloat( av[ 'Telepizza' ].toFixed( 2 ) ),
+      'mid': 0.5,
+      'pos_1d': 0,
+      'pos_2d': 0,
+      'pos_3d': 0,
+      'neg_1d': 0,
+      'neg_2d': 0,
+      'neg_3d': 0,
+
+      'pos_1u_BurgerKing': calcBandPos1( av[ 'BurgerKing' ], baseline_BurgerKing, bandOpts ),
+      'pos_2u_BurgerKing': calcBandPos2( av[ 'BurgerKing' ], baseline_BurgerKing, bandOpts ),
+      'pos_3u_BurgerKing': calcBandPos3( av[ 'BurgerKing' ], baseline_BurgerKing, bandOpts ),
+      'neg_1u_BurgerKing': calcBandNeg1( av[ 'BurgerKing' ], baseline_BurgerKing, bandOpts ),
+      'neg_2u_BurgerKing': calcBandNeg2( av[ 'BurgerKing' ], baseline_BurgerKing, bandOpts ),
+      'neg_3u_BurgerKing': calcBandNeg3( av[ 'BurgerKing' ], baseline_BurgerKing, bandOpts ),
+
+      'pos_1u_PizzaHut': calcBandPos1( av[ 'PizzaHut' ], baseline_PizzaHut, bandOpts ),
+      'pos_2u_PizzaHut': calcBandPos2( av[ 'PizzaHut' ], baseline_PizzaHut, bandOpts ),
+      'pos_3u_PizzaHut': calcBandPos3( av[ 'PizzaHut' ], baseline_PizzaHut, bandOpts ),
+      'neg_1u_PizzaHut': calcBandNeg1( av[ 'PizzaHut' ], baseline_PizzaHut, bandOpts ),
+      'neg_2u_PizzaHut': calcBandNeg2( av[ 'PizzaHut' ], baseline_PizzaHut, bandOpts ),
+      'neg_3u_PizzaHut': calcBandNeg3( av[ 'PizzaHut' ], baseline_PizzaHut, bandOpts ),
+
+      'pos_1u_KFC': calcBandPos1( av[ 'KFC' ], baseline_KFC, bandOpts ),
+      'pos_2u_KFC': calcBandPos2( av[ 'KFC' ], baseline_KFC, bandOpts ),
+      'pos_3u_KFC': calcBandPos3( av[ 'KFC' ], baseline_KFC, bandOpts ),
+      'neg_1u_KFC': calcBandNeg1( av[ 'KFC' ], baseline_KFC, bandOpts ),
+      'neg_2u_KFC': calcBandNeg2( av[ 'KFC' ], baseline_KFC, bandOpts ),
+      'neg_3u_KFC': calcBandNeg3( av[ 'KFC' ], baseline_KFC, bandOpts ),
+
+      'pos_1u_WokToWalk': calcBandPos1( av[ 'WokToWalk' ], baseline_WokToWalk, bandOpts ),
+      'pos_2u_WokToWalk': calcBandPos2( av[ 'WokToWalk' ], baseline_WokToWalk, bandOpts ),
+      'pos_3u_WokToWalk': calcBandPos3( av[ 'WokToWalk' ], baseline_WokToWalk, bandOpts ),
+      'neg_1u_WokToWalk': calcBandNeg1( av[ 'WokToWalk' ], baseline_WokToWalk, bandOpts ),
+      'neg_2u_WokToWalk': calcBandNeg2( av[ 'WokToWalk' ], baseline_WokToWalk, bandOpts ),
+      'neg_3u_WokToWalk': calcBandNeg3( av[ 'WokToWalk' ], baseline_WokToWalk, bandOpts ),
+
+      'pos_1u_Dominos': calcBandPos1( av[ 'Dominos' ], baseline_Dominos, bandOpts ),
+      'pos_2u_Dominos': calcBandPos2( av[ 'Dominos' ], baseline_Dominos, bandOpts ),
+      'pos_3u_Dominos': calcBandPos3( av[ 'Dominos' ], baseline_Dominos, bandOpts ),
+      'neg_1u_Dominos': calcBandNeg1( av[ 'Dominos' ], baseline_Dominos, bandOpts ),
+      'neg_2u_Dominos': calcBandNeg2( av[ 'Dominos' ], baseline_Dominos, bandOpts ),
+      'neg_3u_Dominos': calcBandNeg3( av[ 'Dominos' ], baseline_Dominos, bandOpts ),
+
+      'pos_1u_MCDonalds': calcBandPos1( av[ 'MCDonalds' ], baseline_MCDonalds, bandOpts ),
+      'pos_2u_MCDonalds': calcBandPos2( av[ 'MCDonalds' ], baseline_MCDonalds, bandOpts ),
+      'pos_3u_MCDonalds': calcBandPos3( av[ 'MCDonalds' ], baseline_MCDonalds, bandOpts ),
+      'neg_1u_MCDonalds': calcBandNeg1( av[ 'MCDonalds' ], baseline_MCDonalds, bandOpts ),
+      'neg_2u_MCDonalds': calcBandNeg2( av[ 'MCDonalds' ], baseline_MCDonalds, bandOpts ),
+      'neg_3u_MCDonalds': calcBandNeg3( av[ 'MCDonalds' ], baseline_MCDonalds, bandOpts ),
+
+      'pos_1u_Pans': calcBandPos1( av[ 'Pans' ], baseline_Pans, bandOpts ),
+      'pos_2u_Pans': calcBandPos2( av[ 'Pans' ], baseline_Pans, bandOpts ),
+      'pos_3u_Pans': calcBandPos3( av[ 'Pans' ], baseline_Pans, bandOpts ),
+      'neg_1u_Pans': calcBandNeg1( av[ 'Pans' ], baseline_Pans, bandOpts ),
+      'neg_2u_Pans': calcBandNeg2( av[ 'Pans' ], baseline_Pans, bandOpts ),
+      'neg_3u_Pans': calcBandNeg3( av[ 'Pans' ], baseline_Pans, bandOpts ),
+
+      'pos_1u_Telepizza': calcBandPos1( av[ 'Telepizza' ], baseline_Telepizza, bandOpts ),
+      'pos_2u_Telepizza': calcBandPos2( av[ 'Telepizza' ], baseline_Telepizza, bandOpts ),
+      'pos_3u_Telepizza': calcBandPos3( av[ 'Telepizza' ], baseline_Telepizza, bandOpts ),
+      'neg_1u_Telepizza': calcBandNeg1( av[ 'Telepizza' ], baseline_Telepizza, bandOpts ),
+      'neg_2u_Telepizza': calcBandNeg2( av[ 'Telepizza' ], baseline_Telepizza, bandOpts ),
+      'neg_3u_Telepizza': calcBandNeg3( av[ 'Telepizza' ], baseline_Telepizza, bandOpts )
+    } );
+  }
+
+  newDataSet[ 0 ].dataProvider = newDataProvider;
+
+  for ( var i = 0; i < dimensions.length; i++ ) {
+    var dim = dimensions[ i ];
+    var dimHandle = "_" + dim.dimension;
+
+    var newFieldMappings = buildFieldMappings( dimHandle );
+
+    for ( var x = 0; x < newFieldMappings.length; x++ ) {
+      var fm = newFieldMappings[ x ];
+      newDataSet[ 0 ].fieldMappings.push( fm );
+    }
+
+    var newPanel = buildPanel( dimHandle );
+    newPanel.allLabels[ 0 ].text = dim.dimension;
+    chartPanels.push( newPanel );
+  }
+
+  chart.panels = chartPanels;
+  chart.dataSets = newDataSet;
+
+}, [ "stock" ] );
+
+var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "stock",
+  "dataDateFormat": "YYYY-MM-DD",
+
+  "chartScrollbarSettings": {
+    "graph": "g1",
+    "scrollbarHeight": 40,
+
+    "dragIcon": "dragIconRectSmall",
+    "dragIconWidth": 20,
+    "dragIconHeight": 40,
+
+    "backgroundAlpha": 0,
+    "selectedBackgroundAlpha": 0.1,
+    "selectedBackgroundColor": "#888888",
+    "graphFillAlpha": 0,
+    "graphLineAlpha": 0.5,
+    "selectedGraphFillAlpha": 0,
+    "selectedGraphLineAlpha": 1,
+    "color": "#AAAAAA"
+  },
+
+  "balloon": {
+    "fontSize": 13
+  },
+
+  "panelsSettings": {
+    "fontFamily": "Arial",
+    "creditsPosition": "bottom-right",
+    "panelSpacing": 1,
+    "marginLeft": 15,
+    "marginRight": 15
+  },
+
+  "chartCursorSettings": {
+    "cursorAlpha": 0.5,
+    "cursorColor": '#444444',
+    "valueLineAlpha": 0,
+    "valueBalloonsEnabled": true,
+    "oneBalloonOnly": true
+  },
+
+  "categoryAxesSettings": {
+    "minPeriod": "hh",
+    "parseDates": true,
+    "equalSpacing": false,
+    "gridAlpha": 0,
+    "axisAlpha": 0,
+    "inside": true,
+    "maxSeries": 0
+  },
+
+  "periodSelector": {
+    "position": "bottom",
+    "inputFieldsEnabled": false,
+    "periods": [ {
+      "period": "DD",
+      "selected": true,
+      "count": 1,
+      "label": "1d"
+    }, {
+      "period": "DD",
+      "selected": true,
+      "count": 10,
+      "label": "10d"
+    }, {
+      "period": "MM",
+      "selected": true,
+      "count": 1,
+      "label": "1m"
+    }, {
+      "period": "MM",
+      "selected": true,
+      "count": 6,
+      "label": "6m"
+    }, {
+      "period": "YYYY",
+      "selected": true,
+      "count": 6,
+      "label": "1y"
+    }, {
+      "period": "MAX",
+      "label": "MAX"
+    } ]
+  },
+  "dataSetSelector": {
+    "position": "bottom"
+  },
+  "export": {
+    "enabled": false
+  }
+} );
+	chart.pathToImages = "https://www.amcharts.com/lib/3/images/";
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
+					 
+						</div>
+                      <div class="card" id="card3" style="max-height: 50%;width:100%;margin-left:-10px;margin-top:-10px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);" onclick="lightcard3();">
+                      	<h4 class="title">Reclamações por setor:</h4>
+                      <div style="max-width: 100%;min-height: 440px">
+		   <canvas id="chartJSContainer" style="width: 90%;height: 400px"></canvas></div>
+	<script>
+	var options = {
+  type: 'bubble',
+  data: {
+    datasets: [
+      {
+        label: 'Alimentação',
+        data: [
+          {
+            x: 3,
+            y: 1.4,
+            r: 33
+          }
+        ],
+        backgroundColor:"#ff12ff",
+        hoverBackgroundColor: "#ff12ff"
+      },{
+        label: 'Comércio',
+        data: [
+          {
+            x: 1,
+            y: 4,
+            r: 13
+          }
+        ],
+        backgroundColor:"#faca6f",
+        hoverBackgroundColor: "#faca6f"
+      },
+      {
+        label: 'Saúde',
+          data: [
+            {
+              x: 2,
+              y: 4.2,
+              r: 25
+            }
+          ],
+          backgroundColor:"#a3a3a3",
+          hoverBackgroundColor: "#a3a3a3"
+      },
+      {
+        label: 'Telecomunicações',
+          data: [
+            {
+              x: 1.3,
+              y: 2,
+              r: 25
+            }
+          ],
+          backgroundColor:"#64f123",
+          hoverBackgroundColor: "#64f123"
+      },
+      {
+        label: 'Transportes',
+          data: [
+            {
+              x: 2,
+              y: 1.2,
+              r: 20
+            }
+          ],
+          backgroundColor:"#ff6384",
+          hoverBackgroundColor: "#ff6384"
+      },
+      {
+        label: 'Seguros',
+          data: [
+            {
+              x: 3,
+              y: 4,
+              r: 12
+            }
+          ],
+          backgroundColor:"#6f6384",
+          hoverBackgroundColor: "#6f6384"
+      },
+      {
+        label: 'Imobiliário',
+          data: [
+            {
+              x: 4.1,
+              y: 2,
+              r: 30
+            }
+          ],
+          backgroundColor:"#ffaa84",
+          hoverBackgroundColor: "#ffaa84"
+      }]
+  },options: {
+         scales: {
+        yAxes: [{
+            ticks: {
+                display: false
+            }
+        }],xAxes: [{
+            ticks: {
+                display: false
+            }
+        }]
+    } }}
+
+var ctx = document.getElementById('chartJSContainer').getContext('2d');
+new Chart(ctx, options);
+	</script>
+                      </div>
+                 </div>
+                  
+                   <div class="col-md-6">
+                      
+                     <div class="card" id="card2" style="min-height: 140px;min-width:105%;margin-left:-10px;margin-top:-20px;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);" onclick="lightcard2();">
+                    	<h4 class="title" style="font-size:17px;position:absolute;margin-left:5px">Taxa de SPAM</h4><br>	 
+                    	<script>
+var chart = AmCharts.makeChart("chartdivZ", {
+  "type": "serial",
+  "theme": "light",
+  "rotate": true,
+  "marginBottom": 50,
+  "dataProvider": [{
+    "age": "Burger King",
+    "male": -3.1,
+    "female": 0.7
+  }, {
+    "age": "Domino's",
+    "male": -5.2,
+    "female": 2.3
+  }, {
+    "age": "KFC",
+    "male": -1.3,
+    "female": 3.6
+  }, {
+    "age": "McDonald's",
+    "male": -3.5,
+    "female": 7.8
+  }, {
+    "age": "Pans",
+    "male": -2.8,
+    "female": 2.0
+  }, {
+    "age": "Pizza Hut",
+    "male": -1.1,
+    "female": 1.3
+  }, {
+    "age": "Telepizza",
+    "male": -2.7,
+    "female": 3.9
+  }, {
+    "age": "Wok To Walk",
+    "male": -5.2,
+    "female": 2.5
+  }],
+  "startDuration": 1,
+  "graphs": [{
+    "fillAlphas": 0.8,
+    "lineAlpha": 0.2,
+    "type": "column",
+    "valueField": "male",
+    "title": "male",
+    "labelText": "[[value]]",
+    "clustered": false,
+    "labelFunction": function(item) {
+      return Math.abs(item.values.value);
+    },
+    "balloonFunction": function(item) {
+      return item.category + ": " + Math.abs(item.values.value) + "%";
+    }
+  }, {
+    "fillAlphas": 0.8,
+    "lineAlpha": 0.2,
+    "type": "column",
+    "valueField": "female",
+    "title": "SPAM orientado à empresa",
+    "labelText": "[[value]]",
+    "clustered": false,
+    "labelFunction": function(item) {
+      return Math.abs(item.values.value);
+    },
+    "balloonFunction": function(item) {
+      return item.category + ": " + Math.abs(item.values.value) + "%";
+    }
+  }],
+  "categoryField": "age",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "gridAlpha": 0.2,
+    "axisAlpha": 0
+  },
+  "valueAxes": [{
+    "gridAlpha": 0,
+    "ignoreAxisWidth": true,
+    "labelFunction": function(value) {
+      return Math.abs(value) + '%';
+    },
+    "guides": [{
+      "value": 0,
+      "lineAlpha": 0.2
+    }]
+  }],
+  "balloon": {
+    "fixedPosition": true
+  },
+  "chartCursor": {
+    "valueBalloonsEnabled": false,
+    "cursorAlpha": 0.05,
+    "fullWidth": true
+  },
+  "allLabels": [{
+    "text": "SPAM direccionado aos clientes",
+    "x": "28%",
+    "y": "97%",
+    "bold": true,
+    "align": "middle"
+  }, {
+    "text": "SPAM direccionado à empresa",
+    "x": "75%",
+    "y": "97%",
+    "bold": true,
+    "align": "middle"
+  }],
+ "export": {
+    "enabled": false
+  }
+
+});
+</script>
+
+<!-- HTML -->
+<div id="chartdivZ" style="width:100%;height:500px"></div>	
+                    		 
+                    
+                    </div>
+                     
+                     
+                     <div class="card" id="card4" style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);margin-top:-15px;width:105%;margin-left:-10px" onclick="lightcard4();">
+      <h4 class="title" style="margin-left:20px;padding-top:5px">Regiões com maior afluência de reclamações:</h4>
+        <div style="width: 90%;margin-left:20px;margin-top:-25px">
+         <canvas id="canvasZ" width="450" height="500" style=""></canvas>
+						 </div>
+    <script>
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    var color = Chart.helpers.color;
+    var config = {
+        type: 'radar',
+        data: {
+            labels: ["Porto", "Lisboa", "Viana do Castelo", "Faro", "Coimbra", "Guarda", "Castelo Branco","Setúbal","Beja","Braga"],
+            datasets: [{
+                label: "% de Reclamações por setor",
+                backgroundColor: color(window.chartColors.blue).alpha(0.2).rgbString(),
+                borderColor: window.chartColors.blue,
+                pointBackgroundColor: window.chartColors.blue,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+					 randomScalingFactor(),
+					 randomScalingFactor(),
+					 randomScalingFactor()
+                ]
+            }]
+        },
+        options: {
+            legend: {
+                position: 'bottom',
+            },
+            title: {
+                display: false,
+                text: 'Chart.js Radar Chart'
+            },
+            scale: {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+        }
+    };
+
+    window.onload = function() {
+        window.myRadar = new Chart(document.getElementById("canvasZ"), config);
+    };
+
+    document.getElementById('randomizexxx').addEventListener('click', function() {
+        config.data.datasets.forEach(function(dataset) {
+            dataset.data = dataset.data.map(function() {
+                return randomScalingFactor();
+            });
+        });
+
+        window.myRadar.update();
+    });
+
+    var colorNames = Object.keys(window.chartColors);
+    document.getElementById('addDataset').addEventListener('click', function() {
+        var colorName = colorNames[config.data.datasets.length % colorNames.length];;
+        var newColor = window.chartColors[colorName];
+
+        var newDataset = {
+            label: 'Dataset ' + config.data.datasets.length,
+            borderColor: newColor,
+            backgroundColor: color(newColor).alpha(0.2).rgbString(),
+            pointBorderColor: newColor,
+            data: [],
+        };
+
+        for (var index = 0; index < config.data.labels.length; ++index) {
+            newDataset.data.push(randomScalingFactor());
+        }
+
+        config.data.datasets.push(newDataset);
+        window.myRadar.update();
+    });
+
+    document.getElementById('addData').addEventListener('click', function() {
+        if (config.data.datasets.length > 0) {
+            config.data.labels.push('dataset #' + config.data.labels.length);
+
+            config.data.datasets.forEach(function (dataset) {
+                dataset.data.push(randomScalingFactor());
+            });
+
+            window.myRadar.update();
+        }
+    });
+
+    document.getElementById('removeDataset').addEventListener('click', function() {
+        config.data.datasets.splice(0, 1);
+        window.myRadar.update();
+    });
+
+    document.getElementById('removeData').addEventListener('click', function() {
+        config.data.labels.pop(); // remove the label first
+
+        config.data.datasets.forEach(function(dataset) {
+            dataset.data.pop();
+        });
+
+        window.myRadar.update();
+    });
+    </script>
+						</div>   
+                </div>
+
+
+
+                   
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer" style="margin-top:-35px">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portal
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Outro
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                               Gestor de notícias
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> Francisco Gonçalves, João Lucas Pires, Mariana Pinto, Sara Ferreira
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+	
+    <!--  .js do Dashboard   -->
+    <script src="assets/dashassets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/dashassets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/dashassets/js/chartist.min.js"></script>
+    <script src="assets/dashassets/js/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/dashassets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+	<!-- Light Bootstrap Table DEMO methods,-->
+	<script src="assets/dashassets/js/demo.js"></script>
+
+<!-- Script da notificação-->
+	<script type="text/javascript">
+    	$(document).ready(function(){
+
+        	demo.initChartist();
+
+        	$.notify({
+            	icon: 'pe-7s-info',
+            	message: "Bem-vindo ao dashboard para acesso a membros do governo."
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+    	});
+	</script>
+	
+<!--Este script está no fim para permitir carregar dois graph.js numa página-->	
+
+
+</html>
